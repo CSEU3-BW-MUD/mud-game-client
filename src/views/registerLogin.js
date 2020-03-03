@@ -11,8 +11,10 @@ const StyledContainer = styled.div`
   margin: 0 auto;
   margin-top: 4rem;
   max-width: 55rem;
+  padding: 1rem;
   height: 40rem;
-  border: 1px solid ${props => props.theme.grey};
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.1), 0 15px 12px rgba(0, 0, 0, 0.02);
 
   @media (max-width: 600px) {
     border: none;

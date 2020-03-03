@@ -31,14 +31,13 @@ const StyledRegisterForm = styled.div`
     border-radius: 5px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.05);
     :hover {
-      background-color: ${props => props.theme.brown};
+      background-color: rgba(255, 255, 255, 0.1);
       transition: background-color 0.2s ease-in-out;
-
     }
 
     :focus {
       outline: 1px solid ${props => props.theme.blue};
-      background-color: ${props => props.theme.brown};
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     ::placeholder {
