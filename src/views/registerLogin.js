@@ -7,9 +7,13 @@ import Register from '../components/register-login/register';
 const StyledContainer = styled.div`
   margin: 0 auto;
   margin-top: 4rem;
-  width: 50rem;
+  max-width: 50rem;
   height: 40rem;
   border: 2px solid ${props => props.theme.grey};
+
+  @media(max-width:600px) {
+      border: none;
+  }
 
   .form-container {
     width: 100%;

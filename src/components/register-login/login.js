@@ -13,6 +13,10 @@ const StyledLoginForm = styled.div`
     font-family: ${props => props.theme.logoFont};
     font-size: 4rem;
     margin: 1rem 0 2rem 0;
+
+    @media (max-width: 600px) {
+      font-size: 3rem;
+    }
   }
 
   input {

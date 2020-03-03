@@ -11,6 +11,7 @@ const StyledNav = styled.div`
     font-family: ${props => props.theme.logoFont};
     font-size: 9vw;
     text-shadow: -4px 3px 0 rgba(0, 0, 0, 0.4), -14px 7px 0 rgba(0, 0, 0, 0.4);
+    margin-top: 2rem;
     @media (max-width: 700px) {
       font-size: 11vw;
     }
