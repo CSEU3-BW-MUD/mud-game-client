@@ -77,9 +77,13 @@ function RegisterLogin() {
     setRegister(!register);
   };
 
-  const changeHandler = (e) => {
-      setInputValues({...inputValues, [e.target.name]: e.target.value});
-  }
+  const changeHandler = e => {
+    setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+  };
+
+  const submit = () => {
+    console.log(inputValues);
+  };
 
   return (
     <StyledContainer>
@@ -87,11 +91,11 @@ function RegisterLogin() {
         {register ? (
           <Register inputValues={inputValues} changeHandler={changeHandler} />
         ) : (
-          <Login inputValues={inputValues} changeHandler={changeHandler}/>
+          <Login inputValues={inputValues} changeHandler={changeHandler} />
         )}
       </div>
       <div className="buttons">
-        <button>{register ? 'Register' : 'Login'}</button>
+        <button onClick={submit}>{register ? 'Register' : 'Login'}</button>
         <p onClick={changeForm}>
           {register ? 'Already a member?' : 'Not yet a member? Register here'}
         </p>
