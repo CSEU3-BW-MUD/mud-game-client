@@ -101,16 +101,23 @@ function RegisterLogin(props) {
   const submit = async () => {
     setSpinning(true);
     if (register) {
-      registerAPI(
+      const registerRequest = await registerAPI(
         inputValues.username,
         inputValues.password,
         inputValues.password2,
       );
+      if (registerRequest === true) {
+        setSpinning(false);
+        props.history.push('/about');
+      } else {
+        setSpinning(false);
+      }
     } else {
-      const test = await loginAPI(inputValues.username, inputValues.password);
-      console.log(test);
-
-      if (test === true) {
+      const loginRequest = await loginAPI(
+        inputValues.username,
+        inputValues.password,
+      );
+      if (loginRequest === true) {
         setSpinning(false);
         props.history.push('/about');
       } else {
