@@ -9,46 +9,78 @@ const StyledContainer = styled.div`
   margin-top: 4rem;
   width: 50rem;
   height: 40rem;
-  border: 3px solid ${props => props.theme.grey};
+  border: 2px solid ${props => props.theme.grey};
 
-    .form-container {
-        width: 100%;
-        height: 80%;
-        background-color: red;
+  .form-container {
+    width: 100%;
+    height: 70%;
+  }
+
+  .buttons {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: ${props => props.theme.mainFont};
+
+    button {
+      width: 220px;
+      height: 42px;
+      border: none;
+      background-color: ${props => props.theme.blue};
+      color: ${props => props.theme.ivory};
+      border-radius: 10px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      font-size: 1.5rem;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+
+      :hover {
+        opacity: 0.8;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      :focus {
+        outline: none;
+      }
     }
 
-    .buttons {
-        width: 100%;
-        height: 20%;
-        background-color: blue;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
+    p {
+      color: ${props => props.theme.ivory};
+      font-size: 1.3rem;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+
+      :hover {
+        opacity: 0.8;
+        transition: opacity 0.2s ease-in-out;
+      }
     }
+  }
 `;
 
 function RegisterLogin() {
-    const [register, setRegister] = useState(false);
+  const [register, setRegister] = useState(false);
 
-    const changeForm = () => {
-        setRegister(!register)
-    }
+  const changeForm = () => {
+    setRegister(!register);
+  };
 
   return (
-  <StyledContainer>
+    <StyledContainer>
       <div className="form-container">
-      {register
-      ? <Register />
-      : <Login />
-      }
+        {register ? <Register /> : <Login />}
       </div>
       <div className="buttons">
-    <button>{register ? 'Register' : 'Login'}</button>
-          <button onClick={changeForm}>Change</button>
+        <button>{register ? 'Register' : 'Login'}</button>
+        <p onClick={changeForm}>
+          {register ? 'Already a member?' : 'Not yet a member? Register here'}
+        </p>
       </div>
-  </StyledContainer>
-    );
+    </StyledContainer>
+  );
 }
 
 export default RegisterLogin;
