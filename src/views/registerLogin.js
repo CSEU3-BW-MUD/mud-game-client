@@ -110,7 +110,7 @@ function RegisterLogin(props) {
       );
       if (registerRequest === true) {
         setSpinning(false);
-        props.history.push('/about');
+        props.history.push('/cave');
       } else {
         setSpinning(false);
       }
@@ -121,7 +121,7 @@ function RegisterLogin(props) {
       );
       if (loginRequest === true) {
         setSpinning(false);
-        props.history.push('/about');
+        props.history.push('/cave');
       } else {
         setSpinning(false);
       }

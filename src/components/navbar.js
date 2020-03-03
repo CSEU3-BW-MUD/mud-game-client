@@ -21,7 +21,7 @@ const StyledNav = styled.div`
     width: 50%;
     display: flex;
     justify-content: space-evenly;
-  }
+  
 
   a {
     font-family: ${props => props.theme.mainFont};
@@ -38,12 +38,13 @@ const StyledNav = styled.div`
       transition: color 0.2s ease-in-out;
     }
   }
+}
 `;
 
 function Navbar(props) {
   return (
     <StyledNav>
-      <h1>escape the cave</h1>
+      <Link to='/'><h1>escape the cave</h1></Link>
       <nav>
         <Link to="/about">About</Link>
         {props.isLoggedIn

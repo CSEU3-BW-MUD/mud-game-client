@@ -7,6 +7,7 @@ import { theme } from './styles/theme';
 
 import Navbar from './components/navbar';
 import RegisterLogin from './views/registerLogin';
+import gameView from './views/game';
 
 function App(props) {
   const [ isLoggedIn, setLoggedIn ] = useState(false);
@@ -28,6 +29,7 @@ function App(props) {
       <GlobalStyle />
       <Navbar isLoggedIn={isLoggedIn} logout={logout} />
       <Route exact path="/" component={RegisterLogin} />
+      <Route path="/cave" component={gameView} />
     </ThemeProvider>
   );
 }
