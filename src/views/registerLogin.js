@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Login from '../components/register-login/login';
 import Register from '../components/register-login/register';
 
+import { loginAPI, registerAPI } from '../helpers/auth';
+
 const StyledContainer = styled.div`
   margin: 0 auto;
   margin-top: 4rem;
@@ -74,6 +76,11 @@ function RegisterLogin() {
   });
 
   const changeForm = () => {
+    setInputValues({
+      username: '',
+      password: '',
+      password2: '',
+    });
     setRegister(!register);
   };
 
@@ -82,7 +89,15 @@ function RegisterLogin() {
   };
 
   const submit = () => {
-    console.log(inputValues);
+    if (register) {
+      registerAPI(
+        inputValues.username,
+        inputValues.password,
+        inputValues.password2,
+      );
+    } else {
+      loginAPI(inputValues.username, inputValues.password);
+    }
   };
 
   return (
