@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Login from '../components/register-login/login';
 import Register from '../components/register-login/register';
+import Spinner from '../components/spinner';
 
 import { loginAPI, registerAPI } from '../helpers/auth';
 
@@ -15,6 +16,14 @@ const StyledContainer = styled.div`
 
   @media (max-width: 600px) {
     border: none;
+  }
+
+  .spinner-cont {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
   }
 
   .form-container {
@@ -67,7 +76,8 @@ const StyledContainer = styled.div`
   }
 `;
 
-function RegisterLogin() {
+function RegisterLogin(props) {
+  const [spinning, setSpinning] = useState(true);
   const [register, setRegister] = useState(false);
   const [inputValues, setInputValues] = useState({
     username: '',
@@ -99,13 +109,22 @@ function RegisterLogin() {
       const test = await loginAPI(inputValues.username, inputValues.password);
 
       if (test) {
-        console.log('success');
+        props.history.push('/about')
       } else {
-        console.log('fail');
+          console.log('fail ')
       }
     }
   };
 
+  if(spinning){
+      return (
+          <StyledContainer>
+              <div className="spinner-cont">
+                  <Spinner />
+              </div>
+          </StyledContainer>
+      )
+  }
   return (
     <StyledContainer>
       <div className="form-container">
