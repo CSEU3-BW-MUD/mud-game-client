@@ -38,8 +38,15 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: ${props => props.theme.darkBG};
 }
+
 ol, ul {
 	list-style: none;
 }
@@ -54,6 +61,11 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 `;
 
