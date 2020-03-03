@@ -19,11 +19,11 @@ const StyledContainer = styled.div`
   }
 
   .spinner-cont {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .form-container {
@@ -77,7 +77,7 @@ const StyledContainer = styled.div`
 `;
 
 function RegisterLogin(props) {
-  const [spinning, setSpinning] = useState(true);
+  const [spinning, setSpinning] = useState(false);
   const [register, setRegister] = useState(false);
   const [inputValues, setInputValues] = useState({
     username: '',
@@ -99,6 +99,7 @@ function RegisterLogin(props) {
   };
 
   const submit = async () => {
+    setSpinning(true);
     if (register) {
       registerAPI(
         inputValues.username,
@@ -107,23 +108,25 @@ function RegisterLogin(props) {
       );
     } else {
       const test = await loginAPI(inputValues.username, inputValues.password);
+      console.log(test);
 
-      if (test) {
-        props.history.push('/about')
+      if (test === true) {
+        setSpinning(false);
+        props.history.push('/about');
       } else {
-          console.log('fail ')
+        setSpinning(false);
       }
     }
   };
 
-  if(spinning){
-      return (
-          <StyledContainer>
-              <div className="spinner-cont">
-                  <Spinner />
-              </div>
-          </StyledContainer>
-      )
+  if (spinning) {
+    return (
+      <StyledContainer>
+        <div className="spinner-cont">
+          <Spinner />
+        </div>
+      </StyledContainer>
+    );
   }
   return (
     <StyledContainer>
