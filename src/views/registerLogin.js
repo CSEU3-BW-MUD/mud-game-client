@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 import Login from '../components/register-login/login';
 import Register from '../components/register-login/register';
@@ -127,6 +128,10 @@ function RegisterLogin(props) {
       }
     }
   };
+
+  if (props.isLoggedIn) {
+    return <Redirect to="/cave" />;
+  }
 
   if (spinning) {
     return (

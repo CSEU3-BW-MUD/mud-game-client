@@ -7,15 +7,15 @@ import { theme } from './styles/theme';
 
 import Navbar from './components/navbar';
 import RegisterLogin from './views/registerLogin';
-import gameView from './views/game';
+import GameView from './views/game';
 
 function App(props) {
-  const [ isLoggedIn, setLoggedIn ] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const logout = () => {
     setLoggedIn(false);
     window.localStorage.clear();
-  }
+  };
 
   useEffect(() => {
     const token = window.localStorage.getItem('key');
@@ -28,8 +28,15 @@ function App(props) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Navbar isLoggedIn={isLoggedIn} logout={logout} />
-      <Route exact path="/" component={RegisterLogin} />
-      <Route path="/cave" component={gameView} />
+      <Route
+        exact
+        path="/"
+        render={props => <RegisterLogin {...props} isLoggedIn={isLoggedIn} />}
+      />
+      <Route
+        path="/cave"
+        render={props => <GameView {...props} isLoggedIn={isLoggedIn} />}
+      />
     </ThemeProvider>
   );
 }
