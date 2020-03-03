@@ -88,7 +88,7 @@ function RegisterLogin() {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (register) {
       registerAPI(
         inputValues.username,
@@ -96,7 +96,13 @@ function RegisterLogin() {
         inputValues.password2,
       );
     } else {
-      loginAPI(inputValues.username, inputValues.password);
+      const test = await loginAPI(inputValues.username, inputValues.password);
+
+      if (test) {
+        console.log('success');
+      } else {
+        console.log('fail');
+      }
     }
   };
 
