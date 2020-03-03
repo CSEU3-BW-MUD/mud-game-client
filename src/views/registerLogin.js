@@ -7,12 +7,12 @@ import Register from '../components/register-login/register';
 const StyledContainer = styled.div`
   margin: 0 auto;
   margin-top: 4rem;
-  max-width: 50rem;
+  max-width: 55rem;
   height: 40rem;
-  border: 2px solid ${props => props.theme.grey};
+  border: 1px solid ${props => props.theme.grey};
 
-  @media(max-width:600px) {
-      border: none;
+  @media (max-width: 600px) {
+    border: none;
   }
 
   .form-container {
@@ -67,15 +67,28 @@ const StyledContainer = styled.div`
 
 function RegisterLogin() {
   const [register, setRegister] = useState(false);
+  const [inputValues, setInputValues] = useState({
+    username: '',
+    password: '',
+    password2: '',
+  });
 
   const changeForm = () => {
     setRegister(!register);
   };
 
+  const changeHandler = (e) => {
+      setInputValues({...inputValues, [e.target.name]: e.target.value});
+  }
+
   return (
     <StyledContainer>
       <div className="form-container">
-        {register ? <Register /> : <Login />}
+        {register ? (
+          <Register inputValues={inputValues} changeHandler={changeHandler} />
+        ) : (
+          <Login inputValues={inputValues} changeHandler={changeHandler}/>
+        )}
       </div>
       <div className="buttons">
         <button>{register ? 'Register' : 'Login'}</button>
