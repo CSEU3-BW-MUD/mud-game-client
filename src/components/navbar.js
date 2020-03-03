@@ -40,13 +40,16 @@ const StyledNav = styled.div`
   }
 `;
 
-function Navbar() {
+function Navbar(props) {
   return (
     <StyledNav>
       <h1>escape the cave</h1>
       <nav>
         <Link to="/about">About</Link>
-        <Link to="/">Login/Register</Link>
+        {props.isLoggedIn
+        ? <Link to='/' onClick={props.logout}>Logout</Link>
+        : <Link to='/'>Login/Register</Link>
+      }
       </nav>
     </StyledNav>
   );
