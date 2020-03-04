@@ -19,7 +19,6 @@ function App(props) {
 
   useEffect(() => {
     const token = window.localStorage.getItem('key');
-
     if (token) {
       setLoggedIn(true);
     }
