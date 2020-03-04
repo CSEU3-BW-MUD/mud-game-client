@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/actionCreators';
 
 import Cave from '../components/game/cave';
 import GameDisplay from '../components/game/display';
@@ -30,27 +32,16 @@ const GameContainer = styled.div`
 `;
 
 function GameView(props) {
-  const [rooms, setRooms] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/adv/rooms`)
-      .then(res => {
-        setRooms(res.data.rooms.slice(0, 100));
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
 
-  if (!props.isLoggedIn) {
+  if (!props.auth.loggedIn) {
     return <Redirect to="/" />;
   }
 
   return (
     <GameContainer>
       <section id="maze-section">
-        <Cave rooms={rooms} />
+        {/* <Cave rooms={rooms} /> */}
       </section>
       <section id="display-section">
         <GameDisplay />
@@ -59,4 +50,4 @@ function GameView(props) {
   );
 }
 
-export default GameView;
+export default connect(state => state, actions)(GameView);

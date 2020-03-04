@@ -147,9 +147,9 @@ function RegisterLogin(props) {
       });
   };
 
-  // if (props.auth.loggedIn) {
-  //   return <Redirect to="/cave" />;
-  // }
+  if (props.auth.loggedIn) {
+    return <Redirect to="/cave" />;
+  }
 
   if (spinning) {
     return (
