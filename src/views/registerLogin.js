@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/actionCreators';
 import Login from '../components/register-login/login';
 import Register from '../components/register-login/register';
 import Spinner from '../components/spinner';
-
-import { loginAPI, registerAPI } from '../helpers/auth';
+import axios from 'axios';
 
 const StyledContainer = styled.div`
   margin: 0 auto;
@@ -101,37 +101,55 @@ function RegisterLogin(props) {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
-  const submit = async () => {
+  const submit = () => {
     setSpinning(true);
     if (register) {
-      const registerRequest = await registerAPI(
-        inputValues.username,
-        inputValues.password,
-        inputValues.password2,
-      );
-      if (registerRequest === true) {
-        setSpinning(false);
-        props.history.push('/cave');
-      } else {
-        setSpinning(false);
-      }
+      registerUser();
     } else {
-      const loginRequest = await loginAPI(
-        inputValues.username,
-        inputValues.password,
-      );
-      if (loginRequest === true) {
-        setSpinning(false);
-        props.history.push('/cave');
-      } else {
-        setSpinning(false);
-      }
+      loginUser();
     }
   };
 
-  if (props.isLoggedIn) {
-    return <Redirect to="/cave" />;
-  }
+  const registerUser = () => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/registration/`, {
+        username: inputValues.username,
+        password1: inputValues.password,
+        password2: inputValues.password2,
+      })
+      .then(res => {
+        setSpinning(false);
+        props.setLoggedInUser(res.data.key);
+        window.localStorage.setItem('key', res.data.key);
+        props.history.push('/cave');
+      })
+      .catch(err => {
+        setSpinning(false);
+        console.log(err);
+      });
+  };
+
+  const loginUser = () => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/login/`, {
+        username: inputValues.username,
+        password: inputValues.password,
+      })
+      .then(res => {
+        setSpinning(false);
+        props.setLoggedInUser(res.data.key);
+        window.localStorage.setItem('key', res.data.key);
+        props.history.push('/cave');
+      })
+      .catch(err => {
+        setSpinning(false);
+        console.log(err);
+      });
+  };
+
+  // if (props.auth.loggedIn) {
+  //   return <Redirect to="/cave" />;
+  // }
 
   if (spinning) {
     return (
@@ -161,4 +179,4 @@ function RegisterLogin(props) {
   );
 }
 
-export default RegisterLogin;
+export default connect(state => state, actions)(RegisterLogin);

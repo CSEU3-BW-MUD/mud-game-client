@@ -4,7 +4,8 @@ import * as reducers from './reducers';
 
 const store = createStore(
   combineReducers({
-    count: reducers.countReducer
+    count: reducers.countReducer,
+    auth: reducers.authReducer
   }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

@@ -1,4 +1,3 @@
-
 import * as types from './actions/actionTypes';
 
 // set initial values for slices of state below
@@ -15,5 +14,21 @@ export function countReducer(count = initialCount, action) {
       return 0;
     default:
       return count;
+  }
+}
+
+const initialLoggedInUser = {
+  token: '',
+  loggedIn: false,
+};
+
+export function authReducer(loggedInUser = initialLoggedInUser, action) {
+  switch (action.type) {
+    case types.EMPTY_LOGGED_IN_USER:
+      return initialLoggedInUser;
+    case types.SET_LOGGED_IN_USER:
+      return {loggedIn: true, token: action.payload}
+    default:
+      return loggedInUser;
   }
 }
