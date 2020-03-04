@@ -27,8 +27,34 @@ export function authReducer(loggedInUser = initialLoggedInUser, action) {
     case types.EMPTY_LOGGED_IN_USER:
       return initialLoggedInUser;
     case types.SET_LOGGED_IN_USER:
-      return {loggedIn: true, token: action.payload}
+      return { loggedIn: true, token: action.payload };
     default:
       return loggedInUser;
+  }
+}
+
+const initalGameState = {
+  rooms: [],
+  playerID: '',
+  playerName: '',
+  currentRoomTitle: '',
+  currentRoomDescription: '',
+  error: false,
+};
+
+export function gameReducer(game = initalGameState, action) {
+  switch (action.type) {
+    case types.GET_ALL_ROOMS:
+      return { ...game, rooms: action.payload };
+    case types.INIT_GAME:
+      return {
+        ...game,
+        playerID: action.payload.uuid,
+        playerName: action.payload.name,
+        currentRoomTitle: action.payload.title,
+        currentRoomDescription: action.payload.description,
+      };
+    default:
+      return game;
   }
 }

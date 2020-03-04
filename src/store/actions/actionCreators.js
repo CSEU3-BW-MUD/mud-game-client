@@ -12,3 +12,17 @@ export function logOutUser() {
     type: types.EMPTY_LOGGED_IN_USER,
   };
 }
+
+export function getRooms(rooms) {
+    return {
+        type: types.GET_ALL_ROOMS,
+        payload: rooms
+    }
+}
+
+export function initGame(data) {
+    return {
+        type: types.INIT_GAME,
+        payload: data
+    }
+}

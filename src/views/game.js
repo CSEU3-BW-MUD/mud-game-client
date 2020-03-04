@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
@@ -32,7 +32,33 @@ const GameContainer = styled.div`
 `;
 
 function GameView(props) {
+  const getRooms = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/adv/rooms/`)
+      .then(res => {
+        props.getRooms(res.data.rooms);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
+  const init = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/adv/init/`, {
+        headers: { Authorization: `Token ${window.localStorage.getItem('key')}` },
+      })
+      .then(res => {
+        props.initGame(res.data)
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getRooms();
+    init();
+  }, []);
 
   if (!props.auth.loggedIn) {
     return <Redirect to="/" />;
@@ -40,9 +66,7 @@ function GameView(props) {
 
   return (
     <GameContainer>
-      <section id="maze-section">
-        {/* <Cave rooms={rooms} /> */}
-      </section>
+      <section id="maze-section">{/* <Cave rooms={rooms} /> */}</section>
       <section id="display-section">
         <GameDisplay />
       </section>

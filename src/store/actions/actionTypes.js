@@ -9,3 +9,12 @@ export const RESET = 'RESET';
 
 export const SET_LOGGED_IN_USER = 'SET_LOGGED_IN_USER';
 export const EMPTY_LOGGED_IN_USER = 'EMPTY_LOGGED_IN_USER';
+
+// Rooms
+
+export const GET_ALL_ROOMS = 'GET_ALL_ROOMS';
+
+
+// INIT 
+
+export const INIT_GAME = 'INIT_GAME';
