@@ -26,3 +26,11 @@ export function initGame(data) {
         payload: data
     }
 }
+
+export function moveRoom(data) {
+    return {
+        type: types.MOVE_ROOM,
+        payload: data
+    }
+}
+

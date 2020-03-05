@@ -54,6 +54,13 @@ export function gameReducer(game = initalGameState, action) {
         currentRoomTitle: action.payload.title,
         currentRoomDescription: action.payload.description,
       };
+      case types.MOVE_ROOM:
+      return {
+        ...game,
+        currentRoomTitle: action.payload.title,
+        currentRoomDescription: action.payload.description,
+        error: action.payload.error_msg
+      };
     default:
       return game;
   }

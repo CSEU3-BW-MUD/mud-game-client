@@ -18,3 +18,7 @@ export const GET_ALL_ROOMS = 'GET_ALL_ROOMS';
 // INIT 
 
 export const INIT_GAME = 'INIT_GAME';
+
+// MOVE 
+
+export const MOVE_ROOM = 'MOVE_ROOM';
