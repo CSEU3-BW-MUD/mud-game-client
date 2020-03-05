@@ -66,7 +66,7 @@ function GameView(props) {
 
   return (
     <GameContainer>
-      <section id="maze-section">{/* <Cave rooms={rooms} /> */}</section>
+      <section id="maze-section"><Cave /></section>
       <section id="display-section">
         <GameDisplay />
       </section>
