@@ -14,7 +14,7 @@ const CaveContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;
-  background-color: ${props => props.theme.grey};
+  background-color: ${props => props.theme.darkBG};
 `;
 
 function Cave(props) {
