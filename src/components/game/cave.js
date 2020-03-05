@@ -9,8 +9,8 @@ import Room from './room';
 import Room2 from './room2';
 
 const CaveContainer = styled.div`
-  width: 550px;
-  height: 550px;
+  width: 500px;
+  height: 500px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledEmptyRoom = styled.div`
-  width: 22px;
-  height: 22px;
+  width: 4%;
+  height: 4%;
 `;
 
 function Room() {
