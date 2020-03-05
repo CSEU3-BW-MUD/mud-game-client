@@ -39,7 +39,7 @@ const initalGameState = {
   playerName: '',
   currentRoomTitle: '',
   currentRoomDescription: '',
-  error: false,
+  error: '',
 };
 
 export function gameReducer(game = initalGameState, action) {
