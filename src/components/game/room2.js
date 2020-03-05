@@ -17,7 +17,7 @@ const RoomContainer = styled.div`
     .top-corridor {
       width: 25%;
       height: 100%;
-      background-color: green;
+      background-color: ${props => props.theme.brown};
     }
   }
 
@@ -30,13 +30,13 @@ const RoomContainer = styled.div`
     .side-corridor {
       height: 40%;
       width: 25%;
-      background-color: green;
+      background-color: ${props => props.theme.brown};
     }
 
     .room {
       width: 50%;
       height: 100%;
-      background-color: blue;
+      background-color: ${props => props.theme.ivory};
     }
   }
 `;
@@ -59,7 +59,7 @@ function Room2({ type, game }) {
           className="room"
           style={{
             backgroundColor:
-              game.currentRoomTitle === type.title ? 'red' : 'blue',
+              game.currentRoomTitle === type.title ? 'red' : null,
           }}
         ></div>
         <div
