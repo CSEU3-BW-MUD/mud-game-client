@@ -46,6 +46,8 @@ export function gameReducer(game = initalGameState, action) {
   switch (action.type) {
     case types.GET_ALL_ROOMS:
       return { ...game, rooms: action.payload };
+    case types.RESET_GAME:
+        return initalGameState;
     case types.INIT_GAME:
       return {
         ...game,

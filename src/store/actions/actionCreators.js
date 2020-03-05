@@ -27,6 +27,12 @@ export function initGame(data) {
     }
 }
 
+export function resetGame() {
+    return {
+        type: types.RESET_GAME,
+    }
+}
+
 export function moveRoom(data) {
     return {
         type: types.MOVE_ROOM,

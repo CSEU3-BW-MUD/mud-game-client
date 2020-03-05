@@ -48,7 +48,18 @@ function Navbar(props) {
   const logOut = () => {
     window.localStorage.clear();
     props.logOutUser();
+    props.resetGame();
   }
+  const row = ['x', 'x', 'x','x', 'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x',];
+  const xaxisone = props.game.rooms.filter(x => {
+    return x.y === 0;
+  })
+
+  xaxisone.forEach(item => {
+    row[item.x] = item
+  })
+
+  console.log(row);
 
   return (
     <StyledNav>
